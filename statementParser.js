@@ -1,10 +1,19 @@
 module.exports = (function(){
     var statementGrammar = require("./statementGrammar.js")
     const { SwiftParser } = require("."); 
+    function blockToString(block) {
+        if (Array.isArray(block)) {
+            return block.reduce((prev, current) => prev + blockToString(current), "");
+        }
+        if (typeof block === "string") {
+            return block;
+        }
+        return `{${block.name}:${blockToString(block.content)}}`;
+    }
     function parse(input)
     {
         const parsedStatements = statementGrammar.parse(input);
-        return parsedStatements.map(blocks => blocks.reduce((prev, block) => prev + `{${block.name}:${block.content}}`, "")).map(st => {
+        return Promise.all(parsedStatements.map(blocks => blockToString(blocks)).map(st => {
             return new Promise((resolve, reject) => {
                 new SwiftParser().parse(st, (err, result) => {
                     if (err) {
@@ -13,7 +22,7 @@ module.exports = (function(){
                     resolve(result);
                 })
             })
-        });
+        }));
     }
 
     return {

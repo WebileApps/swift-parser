@@ -22,19 +22,39 @@ JavaScript parser of [ISO 15022](http://www.iso15022.org/) messages used for mes
 ## Installation
 Installation from npm:
 ```Shell
-$ npm install --save swift-parser
+$ npm install --save @webileapps/swift-parser
 ```
 
 Installation from the git repository:
 ```Shell
-$ npm install --save git://github.com/pstodulka/swift-parser.git
+$ npm install --save git://github.com/@webileapps/swift-parser.git
 $ cd node_modules
 $ cd swift-parser
 $ npm install
 $ grunt
 ```
 
-## Usage
+## Usage for multiple SWIFT messages in a single file.
+
+```Javascript
+const { parse } = require("@webileapps/swift-parser/statementParser");
+
+const fs = require("fs");
+const path = require("path");
+
+//Read the file from somewhere.
+fs.readFile(path.join(__dirname,"./example1.rpt"), "utf8", (fileError, data) => {
+
+  //Parse the entire set of statements.
+    parse(data).then(blocks => {
+        console.log(blocks)
+    }).catch(error => {
+        console.error(error);
+    });
+})
+
+```
+## Usage for a single message
 ```JavaScript
 var SwiftParser = require('swift-parser').SwiftParser;
 
