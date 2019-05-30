@@ -1,3 +1,10 @@
+# Original
+
+This was adapted from git://github.com/pstodulka/swift-parser.git 
+
+### Changes
+Added support for parsing multiple sets of blocks using `StatementParser`
+
 # SWIFT Parser
 JavaScript parser of [ISO 15022](http://www.iso15022.org/) messages used for messaging in securities trading by the [SWIFT network](http://www.swift.com/). More about SWIFT messages can be found in the article [Anatomy of a SWIFT message](http://coding.pstodulka.com/2015/01/10/anatomy-of-a-swift-message/).
  
