@@ -25,3 +25,13 @@ build/Release
 node_modules
 
 .idea
+*.map
+
+statementGrammar.js
+mtGrammar.js
+finGrammar.js
+block1Parser.js
+block2Parser.js
+FieldPeg.js
+FieldRegexpFactory.js
+swiftParser.js

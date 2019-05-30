@@ -1,0 +1,15 @@
+start
+  = blocks:blocks [\r\n]* {return blocks.reduce((prev, current) => { 
+	if (+current.name == 1) { prev.push([current]); return prev;}
+prev[prev.length -1].push(current); return prev;
+}, [])}
+
+blocks = block*
+
+block = b: "{" name:$[^:]+ ":" content:content "}" newline {return {name:name, content:content}}
+
+content = (block / text)+
+
+text = chars:$[^{}]+
+
+newline = '\n' / '\r\n'?
