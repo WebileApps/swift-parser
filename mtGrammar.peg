@@ -24,7 +24,7 @@ fieldHeader = ":" type:$(digit digit) option:letter? ":" {return {type: type, op
 
 content = text:$(!((eol ":")/(eol "-")) .)* ((eol &":")/(eol "-")) {return text}
 
-eol = "\n"
+eol = "\n" / "\r\n"
 digit = [0-9]
 
 letter = [a-zA-Z]
