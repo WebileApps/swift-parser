@@ -347,6 +347,10 @@
     "pattern" : "1!a6!n3!a15d",
     "fieldNames": "(DebitOrCredit)(Last Statement Date)(Currency)(Amount)"
   },
+  "61": {
+    "pattern" : "6!n[4!n]2a[1!a]15d1!a3!c16x[//16x][34x]",
+    "fieldNames": "(Value Date)(Entry Date)(DebitOrCredit)(Funds Code)(Amount)(Transaction Type)(Customer Reference)(Bank Reference)(Supplementary Details)"
+  },
   "62F": {
     "pattern" : "1!a6!n3!a15d",
     "fieldNames": "(DebitOrCredit)(Last Statement Date)(Currency)(Amount)"
@@ -442,6 +446,10 @@
   "83D": {
     "pattern": "[/1!a][/34x]$4*35x",
     "fieldNames": "(Party Identifier)$(Name and Address)"
+  },
+  "86": {
+    "pattern": "6x65x",
+    "fieldNames": "(Info To Account Owner)"
   },
   "87A": {
     "pattern": "[/1!a][/34x]$4!a2!a2!c[3!c]",
