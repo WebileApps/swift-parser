@@ -18,9 +18,18 @@ class FieldParser
       regexpSt = @regexpFactory.createRegexp(fieldMetadata.pattern, fieldMetadata.fieldNames)
       @fieldParsers[fieldHeader] = new FieldContentParser(regexpSt, new FieldNames(fieldMetadata.fieldNames))
     parser = @fieldParsers[fieldHeader]
-    result = parser.parse(fieldContent)
-    return result
-
+    try
+      result = parser.parse(fieldContent)
+      return result
+    catch e
+      if (fieldHeader != "61")
+        throw e
+      fieldContents = fieldContent.split("\n");
+      if (fieldContents.length != 2)
+        throw e
+      result = parser.parse(fieldContents[0]);
+      result["Supplementary Details"] = fieldContents[1];
+      return result
 
 class FieldContentParser
   constructor: (@regexpSt, @fieldNames) ->

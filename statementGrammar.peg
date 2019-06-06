@@ -1,15 +1,14 @@
-start
-  = blocks:blocks [\r\n]* {return blocks.reduce((prev, current) => { 
+start = blocks:blocks {return blocks.reduce((prev, current) => { 
 	if (+current.name == 1) { prev.push([current]); return prev;}
 prev[prev.length -1].push(current); return prev;
 }, [])}
 
 blocks = block*
 
-block = b: "{" name:$[^:]+ ":" content:content "}" newline {return {name:name, content:content}}
+block = simpleblock / complexblock
 
-content = (block / text)+
-
+simpleblock = "{" name:$[^:]+ ":" content:text "}" whitespace { return { name , content}} 
+complexblock = "{" name:$[^:]+ ":" content:simpleblock* "}" whitespace { return { name , content}}
+whitespace = [ \t\n\r]*
 text = chars:$[^{}]+
-
-newline = '\n' / '\r\n'?
+newLine = '\n' / '\r\n'?
