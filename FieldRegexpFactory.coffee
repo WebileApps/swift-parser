@@ -24,7 +24,7 @@ class FieldParser
     catch e
       if (fieldHeader != "61")
         throw e
-      fieldContents = fieldContent.split("\n");
+      fieldContents = fieldContent.split(/\r\n|\n/);
       if (fieldContents.length != 2)
         throw e
       result = parser.parse(fieldContents[0]);
