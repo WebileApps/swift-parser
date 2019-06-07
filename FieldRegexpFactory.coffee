@@ -22,10 +22,10 @@ class FieldParser
       result = parser.parse(fieldContent)
       return result
     catch e
-      if (fieldHeader != "61")
+      if (fieldHeader != "61" && fieldHeader != "86")
         throw e
       fieldContents = fieldContent.split(/\r\n|\n/);
-      if (fieldContents.length != 2)
+      if (fieldHeader == "61" && fieldContents.length != 2)
         throw e
       result = parser.parse(fieldContents[0]);
       result["Supplementary Details"] = fieldContents[1];

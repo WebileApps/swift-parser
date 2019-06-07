@@ -3,6 +3,10 @@
     "pattern": "3!n",
     "fieldNames": ""
   },
+  "13D": {
+    "pattern": "6!n4!n1x4!n",
+    "fieldNames": "(Date)"
+  },
   "19": {
     "pattern": "17d",
     "fieldNames": "(Amount)"
@@ -225,6 +229,10 @@
   },
   "34B": {
     "pattern": "3!a15d",
+    "fieldNames": "(Currency)(Amount)"
+  },
+  "34F": {
+    "pattern": "3!a[1!a]15d",
     "fieldNames": "(Currency)(Amount)"
   },
   "35A": {
