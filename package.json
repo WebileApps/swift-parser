@@ -18,7 +18,7 @@
     "grunt-mocha-test": "^0.13.3",
     "grunt-newer": "^0.7.0",
     "grunt-peg": "^1.4.0",
-    "mocha": "^6.1.4"
+    "mocha": "^10.2.0"
   },
   "scripts": {
     "test": "grunt test",
